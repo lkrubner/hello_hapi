@@ -3,15 +3,14 @@
 node() {
 
 
-
         stage('Build') {
-            steps {
+            step {
                 echo 'Building...'
                 sh 'npm install'
             }
         }
         stage('Test') {
-            steps {
+            step {
                 echo 'Testing...'
                 sh 'npm test'
             }
