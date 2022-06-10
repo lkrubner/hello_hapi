@@ -3,7 +3,7 @@
 node() {
 
 
-    stages {
+
         stage('Build') {
             steps {
                 echo 'Building...'
@@ -16,5 +16,5 @@ node() {
                 sh 'npm test'
             }
         }
-    }
+
 }
