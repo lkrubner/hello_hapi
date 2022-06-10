@@ -28,14 +28,14 @@ node() {
     }
 
 
-{
+        stage('Which branch') {
 
         try {
             timeout(time: 180, unit: 'SECONDS') { // change to a convenient timeout for you
 
                 userInput = input(
                     id: 'userInput',
-                    message: "Add tags, separated by whitespace. 'develop' or 'staging' or 'production' will deploy to our various environments.", 
+                    message: "Which branch do you wish to build?", 
                     parameters: [
                         [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Whatever you type becomes a Docker tag.', name: 'Add tags']
                         ])
