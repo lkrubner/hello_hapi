@@ -58,6 +58,36 @@ node() {
     
 
 
+        stage('Which version of PHP') {
+
+        try {
+            timeout(time: 180, unit: 'SECONDS') { // change to a convenient timeout for you
+
+                userInput = input(
+                    id: 'userInput',
+                    message: "Which version of PHP, 5 or 7?", 
+                    parameters: [
+                        [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Whatever you type becomes a Docker tag.', name: 'Add tags']
+                        ])
+
+                listOfDockerTags = userInput.tokenize()
+                                
+            }
+            
+        } catch(e) { // timeout reached or input false
+
+            println "An exception occurred during the 'Add tags' stage:"
+            println e.getMessage()
+            throw e
+
+        }
+
+        println "End of the 'Add tags' stage"
+        
+    }
+    
+
+
 stage('Build') {
 
                 echo 'Building...'
