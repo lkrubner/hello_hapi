@@ -37,7 +37,7 @@ node() {
                     id: 'userInput',
                     message: "Which branch do you wish to build?", 
                     parameters: [
-                        [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Whatever you type becomes a Docker tag.', name: 'Add tags']
+                        [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Which branch do you want to test?', name: 'Type the name of the branch:']
                         ])
 
                 listOfDockerTags = userInput.tokenize()
@@ -67,7 +67,7 @@ node() {
                     id: 'userInput',
                     message: "Which version of PHP, 5 or 7?", 
                     parameters: [
-                        [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Whatever you type becomes a Docker tag.', name: 'Add tags']
+                        [$class: 'TextParameterDefinition', defaultValue: "build-${env.BUILD_NUMBER}", description: 'Ask the developer what version this runs on', name: 'PHP 5 or 7?']
                         ])
 
                 listOfDockerTags = userInput.tokenize()
